@@ -208,8 +208,8 @@
 
 .search-result-answer {
   padding: 1rem;
-  background: var(--color-background-medium);
-  color: var(--color-text-secondary);
+  background: var(--color-background-dark);
+  color: var(--color-text-primary);
   font-size: 0.875rem;
   line-height: 1.6;
   display: none;
@@ -287,19 +287,19 @@
     width: 95vw;
     max-height: 85vh;
   }
-  
+
   .search-modal-header {
     padding: 1rem;
   }
-  
+
   .search-input-container {
     padding: 1rem;
   }
-  
+
   .search-modal-footer {
     padding: 1rem;
   }
-  
+
   .close-button {
     width: 100%;
     justify-content: center;

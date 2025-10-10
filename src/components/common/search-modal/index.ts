@@ -1,6 +1,6 @@
-import { BaseComponent } from '../../core/base-component';
-import template from './template.html?raw';
-import style from './style.css?inline';
+import { BaseComponent } from "../../core/base-component";
+import template from "./template.html?raw";
+import style from "./style.css?inline";
 
 interface SearchResult {
   id: string;
@@ -21,7 +21,8 @@ export class SearchModal extends BaseComponent {
   private $parentElement: HTMLElement | null = null;
   private boundOpenHandler: () => void = this.open.bind(this);
   private boundCloseHandler: () => void = this.close.bind(this);
-  private boundEscapeHandler: (e: KeyboardEvent) => void = this.handleEscape.bind(this);
+  private boundEscapeHandler: (e: KeyboardEvent) => void =
+    this.handleEscape.bind(this);
 
   constructor() {
     super();
@@ -31,11 +32,11 @@ export class SearchModal extends BaseComponent {
 
   protected override connectedCallback(): void {
     super.connectedCallback();
-    
+
     if (this.parentNode !== document.body) {
       document.body.appendChild(this);
     }
-    
+
     this.initializeElements();
     this.bindEvents();
     this.updateResults();
@@ -43,14 +44,16 @@ export class SearchModal extends BaseComponent {
 
   protected override setupEventListeners(): void {
     if (!this.shadowRoot) return;
-    
+
     const triggerId = this.getAttribute("for");
     if (!triggerId) return;
     if (!this.$parentElement) return;
-    
-    this.triggerElement = this.$parentElement.querySelector<HTMLElement>(`#${triggerId}`);
+
+    this.triggerElement = this.$parentElement.querySelector<HTMLElement>(
+      `#${triggerId}`,
+    );
     if (!this.triggerElement) return;
-    
+
     this.triggerElement.addEventListener("click", this.boundOpenHandler);
     document.addEventListener("keydown", this.boundEscapeHandler);
   }
@@ -125,8 +128,6 @@ export class SearchModal extends BaseComponent {
         }))
         .filter((item: SearchResult) => item.question && item.answer);
 
-      console.log(`Loaded ${this.datasetItems.length} questions from dataset`);
-
       // Update results if modal is already open
       if (this.hasAttribute("open")) {
         this.updateResults();
@@ -157,10 +158,10 @@ export class SearchModal extends BaseComponent {
   private normalizeText(text: string): string {
     return text
       .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '') // Remove diacritics/accents
-      .replace(/[^\w\s]/g, ' ') // Replace special characters with spaces
-      .replace(/\s+/g, ' ') // Normalize multiple spaces
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "") // Remove diacritics/accents
+      .replace(/[^\w\s]/g, " ") // Replace special characters with spaces
+      .replace(/\s+/g, " ") // Normalize multiple spaces
       .trim();
   }
 
@@ -294,10 +295,8 @@ export class SearchModal extends BaseComponent {
   private toggleResult(resultItem: HTMLElement): void {
     const isExpanded = resultItem.dataset.expanded === "true";
     const newState = !isExpanded;
+    resultItem.setAttribute("data-expanded", "true");
 
-    resultItem.dataset.expanded = newState.toString();
-
-    // Collapse other results (accordion behavior)
     if (newState) {
       const otherResults = this.resultsContainer.querySelectorAll(
         ".search-result-item",
@@ -331,7 +330,7 @@ export class SearchModal extends BaseComponent {
 
     // Dispatch close event like modal-window
     this.dispatchEvent(
-      new CustomEvent("closed", { bubbles: true, composed: true })
+      new CustomEvent("closed", { bubbles: true, composed: true }),
     );
   }
 
