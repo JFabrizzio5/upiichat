@@ -24,13 +24,14 @@ export class ModalWindow extends BaseComponent {
   }
 
   protected override setupEventListeners(): void {
-    if (!this.shadowRoot) return;
+    if (!this.shadowRoot || !this.$parentElement) return;
     const triggerId = this.getAttribute("for");
     if (!triggerId) return;
-    if (!this.$parentElement) return;
+
     this.triggerElement = this.$parentElement.querySelector<HTMLElement>(
       `#${triggerId}`,
     );
+
     if (!this.triggerElement) return;
     this.triggerElement.addEventListener("click", this.boundOpenHandler);
 

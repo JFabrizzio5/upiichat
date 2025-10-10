@@ -6,20 +6,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
+      "@/base": path.resolve(__dirname, "./src/components/core"),
     },
   },
-  // server: {
-  //   proxy: {
-  //     "/*": {
-  //       target: "http://localhost:5173",
-  //       changeOrigin: true,
-  //     },
-  //   },
-  //   cors: {
-  //     origin: "*",
-  //     methods: ["GET", "POST", "PUT", "DELETE"],
-  //     allowedHeaders: ["Content-Type", "Authorization"],
-  //     credentials: true,
-  //   },
-  // },
 });

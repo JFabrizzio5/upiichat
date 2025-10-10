@@ -103,9 +103,9 @@ chat-container:not(.mobile-layout):has(
   grid-template-columns: var(--sidebar-collapsed-width) 5fr;
 }
 
-hidden {
+/* hidden {
   display: none;
-}
+} */
 
 @media (min-width: 1440px) {
   chat-container {
