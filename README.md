@@ -7,7 +7,7 @@ technologías web.
 
 # 📘 Documentación y Wiki
 
-Para facilitar la contribución y el entendimiento de la estructura del proyecto, puedes consultar la documentación técnica completa aquí:
+Para facilitar la contribución y el entendimiento de la estructura del proyecto, puedes consultar la documentación técnica completa aquí preguntandole a la ia sobre todo el codigo:
 
 👉 [**Ver Wiki del Proyecto en DeepWiki**](https://deepwiki.com/Leviakc/upiichat/1-overview)
 
